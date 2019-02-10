@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+
+			let playerScore, computerScore, counter;
+			counter = 0
+			playerScore = 0;
+			computerScore = 0;
+
+			function computerPlay(){
+				let arr = ["rock", "paper", "scissors"];
+				return arr[Math.floor(Math.random() * arr.length)];
+			}
+
+			function rps(){
+				let playerSelection = prompt("Player 1, Enter rock, paper or scissors").toLowerCase();;
+				let computerSelection = computerPlay();
+
+				counter++;
+
+
+				switch (playerSelection + computerSelection) {
+					case "rockrock":
+					case "paperpaper":
+					case "scissorsscissors":
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection  + " Round: " + counter);
+					counter++;
+					return "It's a tie, play again"
+					break;
+
+					case "rockscissors":
+					win();
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection);
+					return "You win!, rock crushes scissors";
+					break;
+
+					case "rockpaper":
+					lose();
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection);
+					return "You lose!, Paper wraps Rock"
+					break;
+
+					case "scissorspaper":
+					win();
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection);
+					return "You win!, Scissors cuts through Paper"
+					break;
+
+					case "scissorsrock":
+					lose();
+					console.log(playerSelection + computerSelection);
+					return "You lose!, Rock crushes scissors";
+					break;
+
+					case "paperrock":
+					win();
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection);
+					return "You win!, Paper wraps Rock"
+					break;
+
+					case "paperscissors":
+					lose();
+					console.log("You chose " + playerSelection +" and Computer chose "+ computerSelection);
+					return "You lose!, Scissors cuts through Paper"
+					break;
+				}
+
+				console.log( " Your score is "+ playerScore + ", Computer's score is "+ computerScore);
+
+				if (counter == 3) {
+					total();
+				}
+
+			};
+
+
+			function win(){
+				playerScore++;
+				// counter++;
+				console.log( " Round: " + counter + ": Player score: "+ playerScore + ", Computer score: " + computerScore )
+
+			};
+
+			function lose() {
+				computerScore++;
+				// counter++;
+				console.log(" Round: " + counter + ": Player score: "+ playerScore + ", Computer score: " + computerScore)
+
+			};
+
+			function total(){
+				if( playerScore > computerScore){
+					console.log( "You Win, overall score is Player score: "+ playerScore + ", computer Score: "+ computerScore)
+				}
+				else if (playerScore < computerScore) {
+						console.log( "You lose, overall score is Player score: "+ playerScore + ", computer Score: "+ computerScore)
+				}
+				else{
+					console.log( "It's a tie, overall score is Player score: "+ playerScore + ", computer Score: "+ computerScore)
+				}
+			}
+		</script>
+	</body>
+</html>
